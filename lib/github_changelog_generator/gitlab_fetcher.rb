@@ -46,7 +46,7 @@ module GitLabChangelogGenerator
     def find_project_id
       project_id = nil
       @client.project_search(@project).auto_paginate do |project|
-        project_id = project.id if project.namespace.name.eql? @user
+        project_id = project.id if project.namespace.full_path.eql? @user
       end
       project_id
     end
